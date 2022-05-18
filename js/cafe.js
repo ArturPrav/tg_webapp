@@ -17,6 +17,7 @@ var Cafe = {
     Cafe.userHash = options.userHash;
     Cafe.initLotties();
     $('body').show();
+    console.log(options)
     // if (!Telegram.WebApp.initDataUnsafe ||
     //     !Telegram.WebApp.initDataUnsafe.query_id) {
     //   Cafe.isClosed = true;
@@ -265,27 +266,28 @@ var Cafe = {
         params.invoice = 1;
       }
       Cafe.toggleLoading(true);
-      Cafe.apiRequest('makeOrder', params, function(result) {
-        Cafe.toggleLoading(false);
-        if (result.ok) {
-          if (invoiceSupported) {
-            Telegram.WebApp.openInvoice(result.invoice_url, function(status) {
-              if (status == 'paid') {
-                Telegram.WebApp.close();
-              } else if (status == 'failed') {
-                Cafe.showStatus('Payment has been failed.');
-              } else {
-                Cafe.showStatus('You have cancelled this order.');
-              }
-            });
-          } else {
-            Telegram.WebApp.close();
-          }
-        }
-        if (result.error) {
-          Cafe.showStatus(result.error);
-        }
-      });
+      Telegram.WebApp.sendData(params)
+      // Cafe.apiRequest('makeOrder', params, function(result) {
+      //   Cafe.toggleLoading(false);
+      //   if (result.ok) {
+      //     if (invoiceSupported) {
+      //       Telegram.WebApp.openInvoice(result.invoice_url, function(status) {
+      //         if (status == 'paid') {
+      //           Telegram.WebApp.close();
+      //         } else if (status == 'failed') {
+      //           Cafe.showStatus('Payment has been failed.');
+      //         } else {
+      //           Cafe.showStatus('You have cancelled this order.');
+      //         }
+      //       });
+      //     } else {
+      //       Telegram.WebApp.close();
+      //     }
+      //   }
+      //   if (result.error) {
+      //     Cafe.showStatus(result.error);
+      //   }
+      // });
     } else {
       Cafe.toggleMode(true);
     }
@@ -304,23 +306,23 @@ var Cafe = {
     clearTimeout(Cafe.statusTo);
     $('.js-status').removeClass('shown');
   },
-  apiRequest: function(method, data, onCallback) {
-    var authData = Telegram.WebApp.initData || '';
-    $.ajax(Cafe.apiUrl, {
-      type: 'POST',
-      data: $.extend(data, {_auth: authData, method: method}),
-      dataType: 'json',
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function(result) {
-        onCallback && onCallback(result);
-      },
-      error: function(xhr) {
-        onCallback && onCallback({error: 'Server error'});
-      }
-    });
-  }
+  // apiRequest: function(method, data, onCallback) {
+  //   var authData = Telegram.WebApp.initData || '';
+  //   $.ajax(Cafe.apiUrl, {
+  //     type: 'POST',
+  //     data: $.extend(data, {_auth: authData, method: method}),
+  //     dataType: 'json',
+  //     xhrFields: {
+  //       withCredentials: true
+  //     },
+  //     success: function(result) {
+  //       onCallback && onCallback(result);
+  //     },
+  //     error: function(xhr) {
+  //       onCallback && onCallback({error: 'Server error'});
+  //     }
+  //   });
+  // }
 };
 
 /*!
