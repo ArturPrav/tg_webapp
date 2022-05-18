@@ -261,11 +261,12 @@ var Cafe = {
         params.user_id = Cafe.userId;
         params.user_hash = Cafe.userHash;
       }
-      var invoiceSupported = Telegram.WebApp.isVersionAtLeast('6.1');
-      if (invoiceSupported) {
-        params.invoice = 1;
-      }
+      // var invoiceSupported = Telegram.WebApp.isVersionAtLeast('6.1');
+      // if (invoiceSupported) {
+      //   params.invoice = 1;
+      // }
       Cafe.toggleLoading(true);
+      console.log(params)
       Telegram.WebApp.sendData(params)
       // Cafe.apiRequest('makeOrder', params, function(result) {
       //   Cafe.toggleLoading(false);
@@ -288,6 +289,7 @@ var Cafe = {
       //     Cafe.showStatus(result.error);
       //   }
       // });
+      Cafe.toggleLoading(false);
     } else {
       Cafe.toggleMode(true);
     }
