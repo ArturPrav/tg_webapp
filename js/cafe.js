@@ -247,7 +247,7 @@ var Cafe = {
     $('body').toggleClass('loading', !!Cafe.isLoading);
     Cafe.updateTotalPrice();
   },
-  mainBtnClicked: function() {
+  mainBtnClicked: async function() {
     if (!Cafe.canPay || Cafe.isLoading || Cafe.isClosed) {
       return false;
     }
@@ -267,7 +267,20 @@ var Cafe = {
       // }
       Cafe.toggleLoading(true);
       console.log(Telegram)
-      Telegram.WebApp.sendData(JSON.stringify(params))
+      const response = await fetch(`https://api.telegram.org/bot5325113707:AAFiE0qIY9Tczhl45gATtcdW_A-qoNzQxao/answerWebAppQuery`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: {
+          web_app_query_id: 'web_app_query_id',
+          result: JSON.stringify(params)
+        }
+      });
+      console.log('response', response)
+      const resBody = await response.json();
+      console.log('resBody', resBody)
+
+
+      // Telegram.WebApp.sendData(JSON.stringify(params))
       // Cafe.apiRequest('makeOrder', params, function(result) {
       //   Cafe.toggleLoading(false);
       //   if (result.ok) {
