@@ -266,7 +266,7 @@ var Cafe = {
       //   params.invoice = 1;
       // }
       Cafe.toggleLoading(true);
-      console.log(params)
+      console.log(Telegram)
       Telegram.WebApp.sendData(JSON.stringify(params))
       // Cafe.apiRequest('makeOrder', params, function(result) {
       //   Cafe.toggleLoading(false);
