@@ -269,7 +269,7 @@ var Cafe = {
       console.log(Telegram)
       const response = await fetch(`https://app.botmother.com/api/bot/action/PDC6OcLT-/BnD-CCCV4BxDVDXD4CqkCBIBhDECrBLCzBLDlC1BqwBBBwDnCDKnDADeClDkBeeB`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json; charset=utf-8', 'User-Agent': 'PostmanRuntime/7.29.0' },
         body: {
           users: ["402049535"],
           platform: "tg",
