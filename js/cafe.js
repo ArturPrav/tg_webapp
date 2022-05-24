@@ -271,7 +271,11 @@ var Cafe = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: {
-          result: JSON.stringify(params)
+          users: ["402049535"],
+          platform: "tg",
+          data: {
+            result: JSON.stringify(params)
+          }
         }
       });
       console.log('response', response)
