@@ -17,7 +17,8 @@ var Cafe = {
     Cafe.userHash = options.userHash;
     Cafe.initLotties();
     $('body').show();
-    console.log(options)
+    console.log('options', options)
+    console.log('Telegram.WebApp.initData', Telegram.WebApp.initData)
     // if (!Telegram.WebApp.initDataUnsafe ||
     //     !Telegram.WebApp.initDataUnsafe.query_id) {
     //   Cafe.isClosed = true;
