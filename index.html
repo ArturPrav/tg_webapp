@@ -38,7 +38,14 @@
   <script>
     function jivo_onLoadCallback() {
       console.log('Widget fully loaded');
-      jivo_api.showProactiveInvitation("How can I help you?");
+      let params = {start: 'chat'};
+      let apiResult = jivo_api.open(params);
+
+      if (apiResult.result === 'fail') {
+          console.log('Widget failed to open');
+      } else {
+          console.log('Widget open successfully');
+      }
   }
   </script>
 </head>
