@@ -19,6 +19,8 @@
     setThemeClass();
   </script>
   <link href="css/cafe.css" rel="stylesheet">-->
+  <script type="text/javascript" async="" charset="UTF-8" src="https://24.roseltorg.tech/bitrix/js/imopenlines/widget/script.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://24.roseltorg.tech/bitrix/js/imopenlines/widget/styles.min.css?r=1680703507-14">
   <style>
     #jcont {
       --jright: 0!important;
@@ -36,7 +38,7 @@
     }
   </style>
   <script>
-    function jivo_onLoadCallback() {
+    <!--function jivo_onLoadCallback() {
       console.log('Widget fully loaded');
       let params = {start: 'chat'};
       let apiResult = jivo_api.open(params);
@@ -46,7 +48,9 @@
       } else {
           console.log('Widget open successfully');
       }
-  }
+  }-->
+    document.querySelector('.b24-widget-button-inner-container').dispatchEvent(new Event('click'));
+    
   </script>
 </head>
 
@@ -537,7 +541,15 @@
   <script src="https://tg.dev/js/tgsticker.js"></script>
   <script src="js/cafe.js"></script>
   <script>Cafe.init({ "apiUrl": "\/cafe\/api", "userId": 0, "userHash": null });</script>-->
-  <script src="//code-ya.jivosite.com/widget/ETFjL1bWzD" defer async></script>
+  <!-- <script src="//code-ya.jivosite.com/widget/ETFjL1bWzD" defer async></script> -->
+  <div class="ecp-chat">
+  <a href="#" class="ecp-chat__button">
+    <img src="https://www.roseltorg.ru/themes/etp/images/chat/icon-1.svg" alt="">
+  </a>
+  <a href="#" class="ecp-chat__button-wh ecp-chat__button-wh--b24">
+    <img src="https://www.roseltorg.ru/themes/etp/images/chat/icon-3.svg" alt="">
+  </a>
+</div>
 
 </body>
 
